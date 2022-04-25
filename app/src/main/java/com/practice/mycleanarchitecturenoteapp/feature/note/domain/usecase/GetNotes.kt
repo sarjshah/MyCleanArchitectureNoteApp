@@ -16,16 +16,16 @@ class GetNotes @Inject constructor(
             when (noteOrder.orderType) {
                 OrderType.Ascending -> {
                     when (noteOrder) {
-                        is NoteOrder.Colour -> noteList.sortedBy { it.colour }
+                        is NoteOrder.Title -> noteList.sortedBy { it.title.lowercase() }
                         is Date -> noteList.sortedBy { it.timeStamp }
-                        is NoteOrder.Title -> noteList.sortedBy { it.title }
+                        is NoteOrder.Colour -> noteList.sortedBy { it.colour }
                     }
                 }
                 OrderType.Descending -> {
                     when (noteOrder) {
-                        is NoteOrder.Colour -> noteList.sortedByDescending { it.colour }
+                        is NoteOrder.Title -> noteList.sortedByDescending { it.title.lowercase() }
                         is Date -> noteList.sortedByDescending { it.timeStamp }
-                        is NoteOrder.Title -> noteList.sortedByDescending { it.title }
+                        is NoteOrder.Colour -> noteList.sortedByDescending { it.colour }
                     }
                 }
             }
